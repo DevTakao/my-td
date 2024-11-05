@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://vxt8pui146p8"]
+
+[ext_resource type="Script" path="res://essence.gd" id="1_4x01o"]
+[ext_resource type="Texture2D" uid="uid://ccrh4mbuot3v2" path="res://Essence.png" id="1_uf3aw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_peka4"]
+radius = 22.0227
+
+[node name="Essence" type="StaticBody2D"]
+input_pickable = true
+script = ExtResource("1_4x01o")
+
+[node name="Essence" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_uf3aw")
+
+[node name="DespawnCountdown" type="Timer" parent="."]
+wait_time = 7.0
+autostart = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_peka4")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="timeout" from="DespawnCountdown" to="." method="_on_despawn_countdown_timeout"]

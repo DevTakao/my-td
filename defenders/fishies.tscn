@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://u0n2s08sb6y1"]
+
+[ext_resource type="Script" path="res://defenders/fishies.gd" id="1_7mjsk"]
+[ext_resource type="Texture2D" uid="uid://cp31wk6yfysf5" path="res://Fishies.png" id="1_g2388"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7sjtr"]
+radius = 21.0
+
+[node name="Fishies" type="StaticBody2D"]
+collision_mask = 2
+script = ExtResource("1_7mjsk")
+
+[node name="Fishies" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_g2388")
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_7sjtr")
+
+[node name="ProduceTick" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="ProduceTick" to="." method="_on_produce_tick_timeout"]

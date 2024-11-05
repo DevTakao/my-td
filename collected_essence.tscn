@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=3 uid="uid://ddgndtwrt2jqr"]
+
+[ext_resource type="Script" path="res://collected_essence.gd" id="1_bx5bk"]
+[ext_resource type="Texture2D" uid="uid://ccrh4mbuot3v2" path="res://Essence.png" id="1_t3l35"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6jeon"]
+bg_color = Color(5.47487e-07, 0.236343, 0.0798685, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 999
+corner_radius_top_right = 999
+corner_radius_bottom_right = 999
+corner_radius_bottom_left = 999
+shadow_size = 4
+
+[sub_resource type="LabelSettings" id="LabelSettings_jtpt3"]
+line_spacing = 0.0
+font_size = 30
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[node name="CollectedEssence" type="Panel"]
+clip_children = 2
+custom_minimum_size = Vector2(128, 64)
+offset_right = 192.0
+offset_bottom = 99.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_6jeon")
+script = ExtResource("1_bx5bk")
+
+[node name="Essence" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(59, 50)
+scale = Vector2(2.1875, 2.1875)
+texture = ExtResource("1_t3l35")
+
+[node name="Count" type="Label" parent="."]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -98.0
+offset_top = -23.5
+offset_right = -29.0
+offset_bottom = 18.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "0"
+label_settings = SubResource("LabelSettings_jtpt3")
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://d10768uiovlwi"]
+
+[ext_resource type="Script" path="res://picker_fishies.gd" id="1_q7xc8"]
+[ext_resource type="Texture2D" uid="uid://cp31wk6yfysf5" path="res://Fishies.png" id="2_pwn5u"]
+[ext_resource type="Script" path="res://spawner-fishies.gd" id="3_7jqp7"]
+
+[node name="Fishies" type="Panel"]
+custom_minimum_size = Vector2(128, 128)
+offset_right = 192.0
+offset_bottom = 192.0
+script = ExtResource("1_q7xc8")
+
+[node name="Spawner" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_pwn5u")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("3_7jqp7")
+
+[node name="PickEffect" type="ColorRect" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.505882)
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
