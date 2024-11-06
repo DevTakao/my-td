@@ -8,6 +8,8 @@ const COOLDOWN = 8
 const MAX_COOLDOWN_BUFFER = 12
 var time_since_last_produce = 0
 
+var hp = 2
+
 func try_produce():
 	# produce chance gradually increases after cooldown
 	# 100% at total wait time of 20 seconds
@@ -24,3 +26,8 @@ func _on_produce_tick_timeout() -> void:
 	time_since_last_produce += 1;
 	if time_since_last_produce >= COOLDOWN:
 		try_produce() 
+		
+func take_damage(damage: int):
+	hp -= damage
+	if hp <= 0:
+		queue_free()

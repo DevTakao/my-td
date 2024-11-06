@@ -2,7 +2,7 @@ extends Marker2D
 
 @onready var TILEMAP = get_node("/root/Main/TileMapLayer")
 
-const WAVE_DELAY = 20
+const WAVE_DELAY = 10
 var time_since_start = 0
 
 const SPAWN_CHANCE = 10.0 / 100.0

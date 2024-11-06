@@ -13,3 +13,8 @@ func check_enough_essence(cost: int):
 func spend_essence():
 	collected_essence -= pending_cost
 	pending_cost = 0
+
+
+func _on_game_over_area_game_over() -> void:
+	%GameOverScreen.visible = true
+	get_tree().paused = true
