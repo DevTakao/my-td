@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://vwybhc32v1ms"]
+[gd_scene load_steps=5 format=3 uid="uid://vwybhc32v1ms"]
 
 [ext_resource type="Script" path="res://picker-bunny.gd" id="1_ii1ad"]
 [ext_resource type="Texture2D" uid="uid://dvkm3tvash6t5" path="res://Bunny.png" id="2_u1ci1"]
 [ext_resource type="Script" path="res://spawner-bunny.gd" id="3_m7s6a"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_e5yu7"]
+font_size = 30
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
 
 [node name="Bunny" type="Panel"]
 custom_minimum_size = Vector2(128, 128)
@@ -39,5 +44,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.505882)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "50"
+label_settings = SubResource("LabelSettings_e5yu7")
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
