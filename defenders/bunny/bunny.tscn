@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bsq11argslkr3"]
 
-[ext_resource type="Texture2D" uid="uid://dvkm3tvash6t5" path="res://Bunny.png" id="1_6mhfl"]
-[ext_resource type="Script" path="res://defenders/bunny.gd" id="1_qowts"]
+[ext_resource type="Texture2D" uid="uid://dvkm3tvash6t5" path="res://defenders/bunny/Bunny.png" id="1_6mhfl"]
+[ext_resource type="Script" path="res://defenders/bunny/bunny.gd" id="1_qowts"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7sjtr"]
 radius = 21.0

@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqht0edjdkhfi"]
+
+[ext_resource type="Script" path="res://defenders/defender_placer.gd" id="1_ih7qb"]
+
+[node name="DefenderPlacer" type="Panel"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+offset_left = -64.0
+offset_top = 0.5
+offset_right = 384.0
+offset_bottom = 325.5
+script = ExtResource("1_ih7qb")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

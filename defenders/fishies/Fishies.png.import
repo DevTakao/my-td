@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bu5i5flpna4td"
-path="res://.godot/imported/AxeMan.png-a2fb232b2e1ff373b7f000b5c463f917.ctex"
+uid="uid://cp31wk6yfysf5"
+path="res://.godot/imported/Fishies.png-962d9317eab52236256b2e68e452dc64.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://AxeMan.png"
-dest_files=["res://.godot/imported/AxeMan.png-a2fb232b2e1ff373b7f000b5c463f917.ctex"]
+source_file="res://defenders/fishies/Fishies.png"
+dest_files=["res://.godot/imported/Fishies.png-962d9317eab52236256b2e68e452dc64.ctex"]
 
 [params]
 

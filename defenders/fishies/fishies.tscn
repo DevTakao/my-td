@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://u0n2s08sb6y1"]
 
-[ext_resource type="Script" path="res://defenders/fishies.gd" id="1_7mjsk"]
-[ext_resource type="Texture2D" uid="uid://cp31wk6yfysf5" path="res://Fishies.png" id="1_g2388"]
+[ext_resource type="Script" path="res://defenders/fishies/fishies.gd" id="1_7mjsk"]
+[ext_resource type="Texture2D" uid="uid://cp31wk6yfysf5" path="res://defenders/fishies/Fishies.png" id="1_g2388"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7sjtr"]
 radius = 21.0

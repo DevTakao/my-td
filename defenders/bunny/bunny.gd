@@ -1,7 +1,7 @@
 extends StaticBody2D
 
 const ATTACK_RANGE = 300
-const CARROT_BULLET = preload("res://defenders/carrot_bullet.tscn")
+const CARROT_BULLET = preload("res://defenders/bunny/carrot_bullet.tscn")
 
 @onready var shooting_point = $ShootingPoint
 

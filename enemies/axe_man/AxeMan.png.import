@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvkm3tvash6t5"
-path="res://.godot/imported/Bunny.png-7f74e184f534d1fcace63e57fb0a109e.ctex"
+uid="uid://5ac8fcwis1wt"
+path="res://.godot/imported/AxeMan.png-673b0344f3da3dcb86320e8ba2265f07.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Bunny.png"
-dest_files=["res://.godot/imported/Bunny.png-7f74e184f534d1fcace63e57fb0a109e.ctex"]
+source_file="res://enemies/axe_man/AxeMan.png"
+dest_files=["res://.godot/imported/AxeMan.png-673b0344f3da3dcb86320e8ba2265f07.ctex"]
 
 [params]
 

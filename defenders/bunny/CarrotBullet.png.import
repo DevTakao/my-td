@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5ac8fcwis1wt"
-path="res://.godot/imported/AxeManv2.png-ef41aabf0d8f694f9f554f3fda7bf684.ctex"
+uid="uid://bv4anauxi5ax2"
+path="res://.godot/imported/CarrotBullet.png-f49a01fbe77d0aabbc127440bb4ef090.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://AxeManv2.png"
-dest_files=["res://.godot/imported/AxeManv2.png-ef41aabf0d8f694f9f554f3fda7bf684.ctex"]
+source_file="res://defenders/bunny/CarrotBullet.png"
+dest_files=["res://.godot/imported/CarrotBullet.png-f49a01fbe77d0aabbc127440bb4ef090.ctex"]
 
 [params]
 

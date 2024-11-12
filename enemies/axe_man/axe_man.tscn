@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://c71x88tbuoa8"]
 
-[ext_resource type="Script" path="res://enemies/axe_man.gd" id="1_4ppdu"]
-[ext_resource type="Texture2D" uid="uid://5ac8fcwis1wt" path="res://AxeManv2.png" id="2_sv5gv"]
+[ext_resource type="Script" path="res://enemies/axe_man/axe_man.gd" id="1_4ppdu"]
+[ext_resource type="Texture2D" uid="uid://5ac8fcwis1wt" path="res://enemies/axe_man/AxeMan.png" id="2_sv5gv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8k6km"]
 size = Vector2(23, 47)

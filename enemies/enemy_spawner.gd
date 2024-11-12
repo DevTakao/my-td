@@ -1,12 +1,13 @@
 extends Marker2D
 
+@export var ENEMY: Resource
+
 @onready var TILEMAP = get_node("/root/Main/TileMapLayer")
 
 const WAVE_DELAY = 10
 var time_since_start = 0
 
 const SPAWN_CHANCE = 10.0 / 100.0
-const ENEMY = preload("res://enemies/axe_man.tscn")
 
 func _on_spawn_ticker_timeout() -> void:
 	if time_since_start <= WAVE_DELAY:
