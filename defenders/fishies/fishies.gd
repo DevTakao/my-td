@@ -2,7 +2,7 @@ extends StaticBody2D
 
 @onready var ESSENCE = preload("res://essence.tscn")
 @onready var GAME = get_node("/root/Main")
-@onready var TILEMAP = get_node("/root/Main/TileMapLayer")
+@onready var TILEMAP = GAME.get_node("DefenderTileMapLayer")
 
 const COOLDOWN = 8
 const MAX_COOLDOWN_BUFFER = 12

@@ -2,7 +2,7 @@ extends Marker2D
 
 @export var ENEMY: Resource
 
-@onready var TILEMAP = get_node("/root/Main/TileMapLayer")
+@onready var TILEMAP = get_node("/root/Main/DefenderTileMapLayer")
 
 const WAVE_DELAY = 10
 var time_since_start = 0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://bqc3ofj5gn6in"]
+[gd_scene load_steps=19 format=4 uid="uid://bqc3ofj5gn6in"]
 
 [ext_resource type="Script" path="res://GameManager.gd" id="1_5ks2a"]
 [ext_resource type="Texture2D" uid="uid://bo2v8lpxooo83" path="res://tiles/GrassTile.png" id="1_7yeyw"]
@@ -29,10 +29,14 @@ texture = ExtResource("1_7yeyw")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_uhpxo"]
+scenes/1/scene = ExtResource("4_gy3b2")
+
 [sub_resource type="TileSet" id="TileSet_eulae"]
 tile_size = Vector2i(64, 64)
 sources/1 = SubResource("TileSetAtlasSource_7cg2y")
 sources/0 = SubResource("TileSetAtlasSource_xjl6y")
+sources/2 = SubResource("TileSetScenesCollectionSource_uhpxo")
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_5ks2a")
@@ -100,146 +104,47 @@ TO_SPAWN = ExtResource("9_6d3gg")
 COST = 25
 ICON = ExtResource("7_bou6u")
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
+[node name="BgTileMapLayer" type="TileMapLayer" parent="."]
 scale = Vector2(2, 2)
 tile_map_data = PackedByteArray("AAAAAAAAAQAAAAAAAAABAAAAAQAAAAAAAAACAAAAAQAAAAAAAAADAAAAAQAAAAAAAAAEAAAAAQAAAAAAAAAFAAAAAQAAAAAAAAAFAAEAAQAAAAAAAAAEAAEAAQAAAAAAAAADAAEAAQAAAAAAAAACAAEAAQAAAAAAAAABAAEAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAIAAQAAAAAAAAABAAIAAQAAAAAAAAACAAIAAQAAAAAAAAADAAIAAQAAAAAAAAAEAAIAAQAAAAAAAAAFAAIAAQAAAAAAAAAAAAMAAQAAAAAAAAABAAMAAQAAAAAAAAACAAMAAQAAAAAAAAADAAMAAQAAAAAAAAAEAAMAAQAAAAAAAAAFAAMAAQAAAAAAAAAFAAQAAQAAAAAAAAAEAAQAAQAAAAAAAAADAAQAAQAAAAAAAAACAAQAAQAAAAAAAAABAAQAAQAAAAAAAAAAAAQAAQAAAAAAAAD//wQAAAAAAAAAAAD//wMAAAAAAAAAAAD//wIAAAAAAAAAAAD//wEAAAAAAAAAAAD//wAAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_eulae")
 
-[node name="GameOverArea" parent="TileMapLayer" instance=ExtResource("7_klegr")]
+[node name="DefenderTileMapLayer" type="TileMapLayer" parent="."]
+scale = Vector2(2, 2)
+tile_map_data = PackedByteArray("AAAAAAIAAgAAAAAAAQAAAAMAAgAAAAAAAQAAAAQAAgAAAAAAAQAAAAEAAgAAAAAAAQAAAAAAAgAAAAAAAQA=")
+tile_set = SubResource("TileSet_eulae")
+
+[node name="GameOverArea" parent="DefenderTileMapLayer" instance=ExtResource("7_klegr")]
 position = Vector2(-112.5, 160)
 scale = Vector2(0.5, 0.5)
 
-[node name="DefenderPlacer2" parent="TileMapLayer" instance=ExtResource("11_cqyyk")]
+[node name="DefenderPlacer2" parent="DefenderTileMapLayer" instance=ExtResource("11_cqyyk")]
 
-[node name="SpawnPoint1" type="Marker2D" parent="TileMapLayer/DefenderPlacer2"]
-position = Vector2(32, 32.5)
-
-[node name="SpawnPoint2" type="Marker2D" parent="TileMapLayer/DefenderPlacer2"]
-position = Vector2(31.5, 98.5)
-
-[node name="SpawnPoint3" type="Marker2D" parent="TileMapLayer/DefenderPlacer2"]
-position = Vector2(32.5, 162)
-
-[node name="SpawnPoint4" type="Marker2D" parent="TileMapLayer/DefenderPlacer2"]
-position = Vector2(32.5, 225.5)
-
-[node name="SpawnPoint5" type="Marker2D" parent="TileMapLayer/DefenderPlacer2"]
-position = Vector2(31, 289)
-
-[node name="SpawnPoint6" type="Marker2D" parent="TileMapLayer/DefenderPlacer2"]
-position = Vector2(95, 32.5)
-
-[node name="SpawnPoint7" type="Marker2D" parent="TileMapLayer/DefenderPlacer2"]
-position = Vector2(96.5, 96)
-
-[node name="SpawnPoint8" type="Marker2D" parent="TileMapLayer/DefenderPlacer2"]
-position = Vector2(97.5, 160.5)
-
-[node name="SpawnPoint9" type="Marker2D" parent="TileMapLayer/DefenderPlacer2"]
-position = Vector2(96.5, 226)
-
-[node name="SpawnPoint10" type="Marker2D" parent="TileMapLayer/DefenderPlacer2"]
-position = Vector2(96, 289)
-
-[node name="SpawnPoint11" type="Marker2D" parent="TileMapLayer/DefenderPlacer2"]
-position = Vector2(159, 291.5)
-
-[node name="SpawnPoint12" type="Marker2D" parent="TileMapLayer/DefenderPlacer2"]
-position = Vector2(162, 225)
-
-[node name="SpawnPoint13" type="Marker2D" parent="TileMapLayer/DefenderPlacer2"]
-position = Vector2(160, 159)
-
-[node name="SpawnPoint14" type="Marker2D" parent="TileMapLayer/DefenderPlacer2"]
-position = Vector2(158.5, 97)
-
-[node name="SpawnPoint15" type="Marker2D" parent="TileMapLayer/DefenderPlacer2"]
-position = Vector2(158.5, 31)
-
-[node name="SpawnPoint16" type="Marker2D" parent="TileMapLayer/DefenderPlacer2"]
-position = Vector2(223.5, 30.5)
-
-[node name="SpawnPoint17" type="Marker2D" parent="TileMapLayer/DefenderPlacer2"]
-position = Vector2(225.5, 96)
-
-[node name="SpawnPoint18" type="Marker2D" parent="TileMapLayer/DefenderPlacer2"]
-position = Vector2(226.5, 160)
-
-[node name="SpawnPoint19" type="Marker2D" parent="TileMapLayer/DefenderPlacer2"]
-position = Vector2(224.5, 223.5)
-
-[node name="SpawnPoint20" type="Marker2D" parent="TileMapLayer/DefenderPlacer2"]
-position = Vector2(224, 287.5)
-
-[node name="SpawnPoint21" type="Marker2D" parent="TileMapLayer/DefenderPlacer2"]
-position = Vector2(287.5, 31.5)
-
-[node name="SpawnPoint22" type="Marker2D" parent="TileMapLayer/DefenderPlacer2"]
-position = Vector2(287.5, 95.5)
-
-[node name="SpawnPoint23" type="Marker2D" parent="TileMapLayer/DefenderPlacer2"]
-position = Vector2(289.5, 162)
-
-[node name="SpawnPoint24" type="Marker2D" parent="TileMapLayer/DefenderPlacer2"]
-position = Vector2(288.5, 224.5)
-
-[node name="SpawnPoint25" type="Marker2D" parent="TileMapLayer/DefenderPlacer2"]
-position = Vector2(287, 287.5)
-
-[node name="SpawnPoint26" type="Marker2D" parent="TileMapLayer/DefenderPlacer2"]
-position = Vector2(351.5, 32)
-
-[node name="SpawnPoint27" type="Marker2D" parent="TileMapLayer/DefenderPlacer2"]
-position = Vector2(351.5, 96.5)
-
-[node name="SpawnPoint28" type="Marker2D" parent="TileMapLayer/DefenderPlacer2"]
-position = Vector2(352, 161.5)
-
-[node name="SpawnPoint29" type="Marker2D" parent="TileMapLayer/DefenderPlacer2"]
-position = Vector2(354.5, 223)
-
-[node name="SpawnPoint30" type="Marker2D" parent="TileMapLayer/DefenderPlacer2"]
-position = Vector2(353.5, 289.5)
-
-[node name="SpawnPoint31" type="Marker2D" parent="TileMapLayer/DefenderPlacer2"]
-position = Vector2(415, 31)
-
-[node name="SpawnPoint32" type="Marker2D" parent="TileMapLayer/DefenderPlacer2"]
-position = Vector2(416, 93.5)
-
-[node name="SpawnPoint33" type="Marker2D" parent="TileMapLayer/DefenderPlacer2"]
-position = Vector2(414, 160)
-
-[node name="SpawnPoint34" type="Marker2D" parent="TileMapLayer/DefenderPlacer2"]
-position = Vector2(416.5, 221.5)
-
-[node name="SpawnPoint35" type="Marker2D" parent="TileMapLayer/DefenderPlacer2"]
-position = Vector2(414, 286)
-
-[node name="EnemySpawners" type="Node2D" parent="TileMapLayer"]
+[node name="EnemySpawners" type="Node2D" parent="DefenderTileMapLayer"]
+visible = false
 position = Vector2(0, 1)
 
-[node name="EnemySpawner" parent="TileMapLayer/EnemySpawners" instance=ExtResource("5_no8vd")]
+[node name="EnemySpawner" parent="DefenderTileMapLayer/EnemySpawners" instance=ExtResource("5_no8vd")]
 position = Vector2(416, 28.5)
 ENEMY = ExtResource("13_6kn6w")
 
-[node name="EnemySpawner2" parent="TileMapLayer/EnemySpawners" instance=ExtResource("5_no8vd")]
+[node name="EnemySpawner2" parent="DefenderTileMapLayer/EnemySpawners" instance=ExtResource("5_no8vd")]
 position = Vector2(416, 94)
 ENEMY = ExtResource("13_6kn6w")
 
-[node name="EnemySpawner3" parent="TileMapLayer/EnemySpawners" instance=ExtResource("5_no8vd")]
+[node name="EnemySpawner3" parent="DefenderTileMapLayer/EnemySpawners" instance=ExtResource("5_no8vd")]
 position = Vector2(416, 157.5)
 ENEMY = ExtResource("13_6kn6w")
 
-[node name="EnemySpawner4" parent="TileMapLayer/EnemySpawners" instance=ExtResource("5_no8vd")]
+[node name="EnemySpawner4" parent="DefenderTileMapLayer/EnemySpawners" instance=ExtResource("5_no8vd")]
 position = Vector2(416, 223)
 ENEMY = ExtResource("13_6kn6w")
 
-[node name="EnemySpawner5" parent="TileMapLayer/EnemySpawners" instance=ExtResource("5_no8vd")]
+[node name="EnemySpawner5" parent="DefenderTileMapLayer/EnemySpawners" instance=ExtResource("5_no8vd")]
 position = Vector2(416, 284)
 ENEMY = ExtResource("13_6kn6w")
 
-[node name="Fishies" parent="TileMapLayer" instance=ExtResource("9_6d3gg")]
+[node name="Fishies" parent="DefenderTileMapLayer" instance=ExtResource("9_6d3gg")]
 position = Vector2(-29.5, 164)
 
-[connection signal="game_over" from="TileMapLayer/GameOverArea" to="." method="_on_game_over_area_game_over"]
+[connection signal="game_over" from="DefenderTileMapLayer/GameOverArea" to="." method="_on_game_over_area_game_over"]
