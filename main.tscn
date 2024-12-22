@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://ddgndtwrt2jqr" path="res://collected_essence.tscn" id="8_xei5r"]
 [ext_resource type="PackedScene" uid="uid://u0n2s08sb6y1" path="res://defenders/fishies/fishies.tscn" id="9_6d3gg"]
 [ext_resource type="PackedScene" uid="uid://cqht0edjdkhfi" path="res://defenders/defender_placer.tscn" id="11_cqyyk"]
-[ext_resource type="PackedScene" uid="uid://c71x88tbuoa8" path="res://enemies/axe_man/axe_man.tscn" id="13_6kn6w"]
+[ext_resource type="Script" path="res://wave_spawner.gd" id="12_13yvg"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_yj2d1"]
 font_size = 50
@@ -119,32 +119,32 @@ position = Vector2(-112.5, 160)
 scale = Vector2(0.5, 0.5)
 
 [node name="DefenderPlacer2" parent="DefenderTileMapLayer" instance=ExtResource("11_cqyyk")]
+visible = true
 
 [node name="EnemySpawners" type="Node2D" parent="DefenderTileMapLayer"]
-visible = false
 position = Vector2(0, 1)
+script = ExtResource("12_13yvg")
+
+[node name="WaveTimer" type="Timer" parent="DefenderTileMapLayer/EnemySpawners"]
+autostart = true
 
 [node name="EnemySpawner" parent="DefenderTileMapLayer/EnemySpawners" instance=ExtResource("5_no8vd")]
 position = Vector2(416, 28.5)
-ENEMY = ExtResource("13_6kn6w")
 
 [node name="EnemySpawner2" parent="DefenderTileMapLayer/EnemySpawners" instance=ExtResource("5_no8vd")]
 position = Vector2(416, 94)
-ENEMY = ExtResource("13_6kn6w")
 
 [node name="EnemySpawner3" parent="DefenderTileMapLayer/EnemySpawners" instance=ExtResource("5_no8vd")]
 position = Vector2(416, 157.5)
-ENEMY = ExtResource("13_6kn6w")
 
 [node name="EnemySpawner4" parent="DefenderTileMapLayer/EnemySpawners" instance=ExtResource("5_no8vd")]
 position = Vector2(416, 223)
-ENEMY = ExtResource("13_6kn6w")
 
 [node name="EnemySpawner5" parent="DefenderTileMapLayer/EnemySpawners" instance=ExtResource("5_no8vd")]
 position = Vector2(416, 284)
-ENEMY = ExtResource("13_6kn6w")
 
 [node name="Fishies" parent="DefenderTileMapLayer" instance=ExtResource("9_6d3gg")]
 position = Vector2(-29.5, 164)
 
 [connection signal="game_over" from="DefenderTileMapLayer/GameOverArea" to="." method="_on_game_over_area_game_over"]
+[connection signal="timeout" from="DefenderTileMapLayer/EnemySpawners/WaveTimer" to="DefenderTileMapLayer/EnemySpawners" method="_on_wave_timer_timeout"]

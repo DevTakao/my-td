@@ -2,7 +2,6 @@ extends Panel
 
 @onready var GAME = get_node("/root/Main")
 @onready var TILEMAP = get_node("/root/Main/DefenderTileMapLayer")
-@onready var SPAWN_POINTS = get_children()
 
 func finish_picking_defender():
 	GAME.action = 'default'

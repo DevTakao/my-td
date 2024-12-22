@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+const CODE_NAME = 'axeman'
 const DAMAGE = 1
 const SPEED = 50
 var hp = 5;

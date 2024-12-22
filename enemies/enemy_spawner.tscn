@@ -7,7 +7,7 @@ script = ExtResource("1_n70w8")
 
 [node name="SpawnTicker" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 2.0
+wait_time = 0.5
 autostart = true
 
 [connection signal="timeout" from="SpawnTicker" to="." method="_on_spawn_ticker_timeout"]
