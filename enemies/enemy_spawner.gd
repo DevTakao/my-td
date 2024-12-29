@@ -11,7 +11,6 @@ func spawn():
 	if (spawn_queue.is_empty()):
 		pass
 	else:
-		print("spawn")
 		var ENEMY = spawn_queue.pop_front()
 		var enemy = ENEMY.instantiate()
 		enemy.position = position

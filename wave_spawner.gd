@@ -10,32 +10,40 @@ func _ready() -> void:
 	var spawner4 = get_node("EnemySpawner4")
 	var spawner5 = get_node("EnemySpawner5")
 	spawners = [spawner1, spawner2, spawner3, spawner4, spawner5]
+	
+const WAVE_DELAY = 30
 
 const WAVE_1 = {
-	"starts_at": 5,
+	"starts_at": WAVE_DELAY + 1,
 	"mobs": [[AXEMAN, 1]]
 }
 
 const WAVE_2 = {
-	"starts_at": 10,
-	"mobs": [[AXEMAN, 5]]
+	"starts_at": WAVE_DELAY + 20,
+	"mobs": [[AXEMAN, 2]]
 }
 
 const WAVE_3 = {
-	"starts_at": 15,
-	"mobs": [[AXEMAN, 15]]
+	"starts_at": WAVE_DELAY + 40,
+	"mobs": [[AXEMAN, 5]]
 }
 
 const WAVE_4 = {
-	"starts_at": 15,
-	"mobs": [[AXEMAN, 100]]
+	"starts_at": WAVE_DELAY + 60,
+	"mobs": [[AXEMAN, 10]]
+}
+
+const WAVE_5 = {
+	"starts_at": WAVE_DELAY + 80,
+	"mobs": [[AXEMAN, 5]]
 }
 
 const WAVES = [
 	WAVE_1,
 	WAVE_2,
 	WAVE_3,
-	WAVE_4
+	WAVE_4,
+	WAVE_5
 ]
 
 var wave_index = 0
@@ -54,8 +62,11 @@ func _on_wave_timer_timeout() -> void:
 func summon_wave(wave):
 	for mob in wave.mobs:
 		var remaining_spawn = mob[1]
+		var spawned = 0;
 		while remaining_spawn > 0:
-			print("spawn no.", 100 - remaining_spawn)
 			var spawner = spawners.pick_random()
 			spawner.add_to_spawn_queue(mob[0])
 			remaining_spawn -= 1
+			spawned += 1
+			print("spawn no.", spawned)
+			

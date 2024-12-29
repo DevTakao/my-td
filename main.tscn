@@ -111,7 +111,6 @@ tile_set = SubResource("TileSet_eulae")
 
 [node name="DefenderTileMapLayer" type="TileMapLayer" parent="."]
 scale = Vector2(2, 2)
-tile_map_data = PackedByteArray("AAAAAAIAAgAAAAAAAQAAAAMAAgAAAAAAAQAAAAQAAgAAAAAAAQAAAAEAAgAAAAAAAQAAAAAAAgAAAAAAAQA=")
 tile_set = SubResource("TileSet_eulae")
 
 [node name="GameOverArea" parent="DefenderTileMapLayer" instance=ExtResource("7_klegr")]
@@ -119,7 +118,6 @@ position = Vector2(-112.5, 160)
 scale = Vector2(0.5, 0.5)
 
 [node name="DefenderPlacer2" parent="DefenderTileMapLayer" instance=ExtResource("11_cqyyk")]
-visible = true
 
 [node name="EnemySpawners" type="Node2D" parent="DefenderTileMapLayer"]
 position = Vector2(0, 1)
@@ -142,9 +140,6 @@ position = Vector2(416, 223)
 
 [node name="EnemySpawner5" parent="DefenderTileMapLayer/EnemySpawners" instance=ExtResource("5_no8vd")]
 position = Vector2(416, 284)
-
-[node name="Fishies" parent="DefenderTileMapLayer" instance=ExtResource("9_6d3gg")]
-position = Vector2(-29.5, 164)
 
 [connection signal="game_over" from="DefenderTileMapLayer/GameOverArea" to="." method="_on_game_over_area_game_over"]
 [connection signal="timeout" from="DefenderTileMapLayer/EnemySpawners/WaveTimer" to="DefenderTileMapLayer/EnemySpawners" method="_on_wave_timer_timeout"]

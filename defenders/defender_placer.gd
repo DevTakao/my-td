@@ -20,7 +20,7 @@ func get_clicked_cell():
 	return clicked_cell
 	
 func add_defender_to_cell(defender: Node, cell: Vector2i):
-	if cell:
+	if cell is Vector2i:
 		var cell_position = TILEMAP.map_to_local(cell)
 		defender.position = cell_position
 		TILEMAP.add_child(defender)
