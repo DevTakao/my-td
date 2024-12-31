@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://bqc3ofj5gn6in"]
+[gd_scene load_steps=20 format=4 uid="uid://bqc3ofj5gn6in"]
 
 [ext_resource type="Script" path="res://GameManager.gd" id="1_5ks2a"]
 [ext_resource type="Texture2D" uid="uid://bo2v8lpxooo83" path="res://tiles/GrassTile.png" id="1_7yeyw"]
@@ -17,7 +17,10 @@
 [sub_resource type="LabelSettings" id="LabelSettings_yj2d1"]
 font_size = 50
 outline_size = 10
-outline_color = Color(0.694112, 0.0549007, 0, 1)
+outline_color = Color(0.70694, 0, 0.167683, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_hwfnn"]
+font_size = 50
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xjl6y"]
 resource_name = "Water"
@@ -85,6 +88,38 @@ label_settings = SubResource("LabelSettings_yj2d1")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="VictoryScreen" type="CanvasLayer" parent="Camera2D"]
+unique_name_in_owner = true
+visible = false
+follow_viewport_enabled = true
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D/VictoryScreen"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -192.0
+offset_right = -128.0
+offset_bottom = -192.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.721569)
+
+[node name="Label" type="Label" parent="Camera2D/VictoryScreen"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -192.0
+offset_right = -128.0
+offset_bottom = -192.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "You win!"
+label_settings = SubResource("LabelSettings_hwfnn")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="CollectedEssence" parent="." instance=ExtResource("8_xei5r")]
 offset_left = 537.0
 offset_top = -156.0
@@ -124,30 +159,38 @@ tile_set = SubResource("TileSet_eulae")
 position = Vector2(-112.5, 160)
 scale = Vector2(0.5, 0.5)
 
-[node name="DefenderPlacer2" parent="DefenderTileMapLayer" instance=ExtResource("11_cqyyk")]
+[node name="DefenderPlacer" parent="DefenderTileMapLayer" instance=ExtResource("11_cqyyk")]
 visible = true
 
-[node name="EnemySpawners" type="Node2D" parent="DefenderTileMapLayer"]
+[node name="EnemyTileMapLayer" type="TileMapLayer" parent="."]
+scale = Vector2(2, 2)
+tile_set = SubResource("TileSet_eulae")
+
+[node name="EnemySpawners" type="Node2D" parent="EnemyTileMapLayer"]
 position = Vector2(0, 1)
 script = ExtResource("12_13yvg")
 
-[node name="WaveTimer" type="Timer" parent="DefenderTileMapLayer/EnemySpawners"]
+[node name="WaveTimer" type="Timer" parent="EnemyTileMapLayer/EnemySpawners"]
 autostart = true
 
-[node name="EnemySpawner" parent="DefenderTileMapLayer/EnemySpawners" instance=ExtResource("5_no8vd")]
+[node name="EnemySpawner" parent="EnemyTileMapLayer/EnemySpawners" instance=ExtResource("5_no8vd")]
 position = Vector2(416, 28.5)
 
-[node name="EnemySpawner2" parent="DefenderTileMapLayer/EnemySpawners" instance=ExtResource("5_no8vd")]
+[node name="EnemySpawner2" parent="EnemyTileMapLayer/EnemySpawners" instance=ExtResource("5_no8vd")]
 position = Vector2(416, 94)
 
-[node name="EnemySpawner3" parent="DefenderTileMapLayer/EnemySpawners" instance=ExtResource("5_no8vd")]
+[node name="EnemySpawner3" parent="EnemyTileMapLayer/EnemySpawners" instance=ExtResource("5_no8vd")]
 position = Vector2(416, 157.5)
 
-[node name="EnemySpawner4" parent="DefenderTileMapLayer/EnemySpawners" instance=ExtResource("5_no8vd")]
+[node name="EnemySpawner4" parent="EnemyTileMapLayer/EnemySpawners" instance=ExtResource("5_no8vd")]
 position = Vector2(416, 223)
 
-[node name="EnemySpawner5" parent="DefenderTileMapLayer/EnemySpawners" instance=ExtResource("5_no8vd")]
+[node name="EnemySpawner5" parent="EnemyTileMapLayer/EnemySpawners" instance=ExtResource("5_no8vd")]
 position = Vector2(416, 284)
 
+[node name="Enemies" type="Node2D" parent="EnemyTileMapLayer"]
+unique_name_in_owner = true
+
 [connection signal="game_over" from="DefenderTileMapLayer/GameOverArea" to="." method="_on_game_over_area_game_over"]
-[connection signal="timeout" from="DefenderTileMapLayer/EnemySpawners/WaveTimer" to="DefenderTileMapLayer/EnemySpawners" method="_on_wave_timer_timeout"]
+[connection signal="victory" from="EnemyTileMapLayer/EnemySpawners" to="." method="_on_enemy_spawners_victory"]
+[connection signal="timeout" from="EnemyTileMapLayer/EnemySpawners/WaveTimer" to="EnemyTileMapLayer/EnemySpawners" method="_on_wave_timer_timeout"]

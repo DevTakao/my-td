@@ -1,5 +1,9 @@
 extends Node2D
 
+signal victory
+
+@onready var ENEMY_TILEMAP = get_node("/root/Main/EnemyTileMapLayer/Enemies")
+
 const AXEMAN = preload("res://enemies/axe_man/axe_man.tscn")
 var spawners = []
 
@@ -51,12 +55,16 @@ var seconds_passed = 0
 var final_wave_index = len(WAVES) - 1
 
 func _on_wave_timer_timeout() -> void:
-	if (wave_index <= final_wave_index):
+	var are_waves_remaining = wave_index <= final_wave_index
+	if (are_waves_remaining):
 		seconds_passed += 1
 		var next_wave = WAVES[wave_index]
 		if (seconds_passed == next_wave.starts_at):
 			summon_wave(next_wave)
 			wave_index += 1
+	else:
+		if ENEMY_TILEMAP.get_child_count() == 0:
+			victory.emit()
 
 # wave_data looks like { "starts_at": 30, "mobs": [['axeman', 10]] }
 func summon_wave(wave):

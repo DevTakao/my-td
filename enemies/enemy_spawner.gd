@@ -1,6 +1,7 @@
 extends Marker2D
 
 @onready var TILEMAP = get_node("/root/Main/DefenderTileMapLayer")
+@onready var ENEMY_TILEMAP = get_node("/root/Main/EnemyTileMapLayer/Enemies")
 
 var spawn_queue = []
 
@@ -14,8 +15,7 @@ func spawn():
 		var ENEMY = spawn_queue.pop_front()
 		var enemy = ENEMY.instantiate()
 		enemy.position = position
-		TILEMAP.add_child(enemy)
-
+		ENEMY_TILEMAP.add_child(enemy)
 
 func _on_spawn_ticker_timeout() -> void:
 	spawn()
