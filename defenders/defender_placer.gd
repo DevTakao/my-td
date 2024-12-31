@@ -33,13 +33,18 @@ func add_defender_to_cell(defender: Node, cell: Vector2i):
 		occupied_cells.push_back(cell)
 	else:
 		print("Invalid cell")
+		
+func check_placement_legality(defender: Node2D, cell: Vector2i):
+	var is_occupied = occupied_cells.has(cell)
+	var terrain = TILEMAP.get_cell_tile_data(cell).get_custom_data("terrain")
+	return not is_occupied and defender.terrain_list.has(terrain)
 
 func place_defender():
 	var defender = GAME.picked_defender.instantiate()
 	var cell = get_clicked_cell()
-	var is_occupied = occupied_cells.has(cell)
+	var can_place = check_placement_legality(defender, cell)
 	
-	if not is_occupied:
+	if can_place:
 		add_defender_to_cell(defender, cell)
 		finish_picking_defender()
 	else:

@@ -1,5 +1,7 @@
 extends StaticBody2D
 
+@export var terrain_list = ["grass"]
+
 const ATTACK_RANGE = 300
 const CARROT_BULLET = preload("res://defenders/bunny/carrot_bullet.tscn")
 
