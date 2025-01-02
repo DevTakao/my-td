@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://btkme7qaxekfa"]
+
+[ext_resource type="Script" path="res://ui/restart_button.gd" id="1_ghdf6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fvhhf"]
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_yaxdt"]
+font_size = 40
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[node name="RestartButton" type="PanelContainer"]
+process_mode = 3
+clip_contents = true
+offset_right = 256.0
+offset_bottom = 64.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_fvhhf")
+script = ExtResource("1_ghdf6")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "Restart"
+label_settings = SubResource("LabelSettings_yaxdt")
+horizontal_alignment = 1
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

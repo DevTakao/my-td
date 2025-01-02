@@ -1,8 +1,9 @@
-[gd_scene load_steps=20 format=4 uid="uid://bqc3ofj5gn6in"]
+[gd_scene load_steps=21 format=4 uid="uid://bqc3ofj5gn6in"]
 
 [ext_resource type="Script" path="res://GameManager.gd" id="1_5ks2a"]
 [ext_resource type="Texture2D" uid="uid://bo2v8lpxooo83" path="res://tiles/GrassTile.png" id="1_7yeyw"]
 [ext_resource type="Texture2D" uid="uid://db4j8ha2wlvpq" path="res://tiles/WaterTile.png" id="2_nfght"]
+[ext_resource type="PackedScene" uid="uid://btkme7qaxekfa" path="res://ui/restart_button.tscn" id="2_piuh0"]
 [ext_resource type="PackedScene" uid="uid://vwybhc32v1ms" path="res://defenders/defender-picker.tscn" id="3_67toc"]
 [ext_resource type="PackedScene" uid="uid://bsq11argslkr3" path="res://defenders/bunny/bunny.tscn" id="4_gy3b2"]
 [ext_resource type="Texture2D" uid="uid://dvkm3tvash6t5" path="res://defenders/bunny/Bunny.png" id="5_11kqj"]
@@ -88,6 +89,12 @@ label_settings = SubResource("LabelSettings_yj2d1")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="RestartButton" parent="Camera2D/GameOverScreen" instance=ExtResource("2_piuh0")]
+offset_left = 195.0
+offset_top = 298.0
+offset_right = 451.0
+offset_bottom = 362.0
+
 [node name="VictoryScreen" type="CanvasLayer" parent="Camera2D"]
 unique_name_in_owner = true
 visible = false
@@ -119,6 +126,12 @@ text = "You win!"
 label_settings = SubResource("LabelSettings_hwfnn")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="RestartButton" parent="Camera2D/VictoryScreen" instance=ExtResource("2_piuh0")]
+offset_left = 195.0
+offset_top = 298.0
+offset_right = 451.0
+offset_bottom = 362.0
 
 [node name="CollectedEssence" parent="." instance=ExtResource("8_xei5r")]
 offset_left = 537.0
