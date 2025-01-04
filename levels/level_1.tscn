@@ -1,19 +1,19 @@
-[gd_scene load_steps=21 format=4 uid="uid://bqc3ofj5gn6in"]
+[gd_scene load_steps=21 format=4 uid="uid://d0ku3fajlf4s4"]
 
-[ext_resource type="Script" path="res://managers/GameManager.gd" id="1_5ks2a"]
-[ext_resource type="Texture2D" uid="uid://bo2v8lpxooo83" path="res://tiles/GrassTile.png" id="1_7yeyw"]
-[ext_resource type="Texture2D" uid="uid://db4j8ha2wlvpq" path="res://tiles/WaterTile.png" id="2_nfght"]
-[ext_resource type="PackedScene" uid="uid://btkme7qaxekfa" path="res://ui/restart_button.tscn" id="2_piuh0"]
-[ext_resource type="PackedScene" uid="uid://vwybhc32v1ms" path="res://defenders/defender-picker.tscn" id="3_67toc"]
-[ext_resource type="PackedScene" uid="uid://bsq11argslkr3" path="res://defenders/bunny/bunny.tscn" id="4_gy3b2"]
-[ext_resource type="Texture2D" uid="uid://dvkm3tvash6t5" path="res://defenders/bunny/Bunny.png" id="5_11kqj"]
-[ext_resource type="PackedScene" uid="uid://bvkswy5jm1f2v" path="res://enemies/enemy_spawner.tscn" id="5_no8vd"]
-[ext_resource type="Texture2D" uid="uid://cp31wk6yfysf5" path="res://defenders/fishies/Fishies.png" id="7_bou6u"]
-[ext_resource type="PackedScene" uid="uid://bgfgwpgdd0juh" path="res://ui/game_over_area.tscn" id="7_klegr"]
-[ext_resource type="PackedScene" uid="uid://ddgndtwrt2jqr" path="res://ui/collected_essence.tscn" id="8_xei5r"]
-[ext_resource type="PackedScene" uid="uid://u0n2s08sb6y1" path="res://defenders/fishies/fishies.tscn" id="9_6d3gg"]
-[ext_resource type="PackedScene" uid="uid://cqht0edjdkhfi" path="res://defenders/defender_placer.tscn" id="11_cqyyk"]
-[ext_resource type="Script" path="res://enemies/wave_spawner.gd" id="12_13yvg"]
+[ext_resource type="Script" path="res://managers/GameManager.gd" id="1_3kfpr"]
+[ext_resource type="PackedScene" uid="uid://btkme7qaxekfa" path="res://ui/restart_button.tscn" id="2_aynqm"]
+[ext_resource type="PackedScene" uid="uid://ddgndtwrt2jqr" path="res://ui/collected_essence.tscn" id="3_uqst5"]
+[ext_resource type="PackedScene" uid="uid://vwybhc32v1ms" path="res://defenders/defender-picker.tscn" id="4_2l4ph"]
+[ext_resource type="PackedScene" uid="uid://bsq11argslkr3" path="res://defenders/bunny/bunny.tscn" id="5_d32px"]
+[ext_resource type="Texture2D" uid="uid://dvkm3tvash6t5" path="res://defenders/bunny/Bunny.png" id="6_wp85y"]
+[ext_resource type="PackedScene" uid="uid://u0n2s08sb6y1" path="res://defenders/fishies/fishies.tscn" id="7_gxvar"]
+[ext_resource type="Texture2D" uid="uid://cp31wk6yfysf5" path="res://defenders/fishies/Fishies.png" id="8_7rluu"]
+[ext_resource type="Texture2D" uid="uid://db4j8ha2wlvpq" path="res://tiles/WaterTile.png" id="9_476yh"]
+[ext_resource type="Texture2D" uid="uid://bo2v8lpxooo83" path="res://tiles/GrassTile.png" id="10_g1u0p"]
+[ext_resource type="PackedScene" uid="uid://bgfgwpgdd0juh" path="res://ui/game_over_area.tscn" id="11_xn2ev"]
+[ext_resource type="PackedScene" uid="uid://cqht0edjdkhfi" path="res://defenders/defender_placer.tscn" id="12_eq264"]
+[ext_resource type="Script" path="res://enemies/wave_spawner.gd" id="13_r1cfx"]
+[ext_resource type="PackedScene" uid="uid://bvkswy5jm1f2v" path="res://enemies/enemy_spawner.tscn" id="14_odgwq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_yj2d1"]
 font_size = 50
@@ -25,21 +25,21 @@ font_size = 50
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xjl6y"]
 resource_name = "Water"
-texture = ExtResource("2_nfght")
+texture = ExtResource("9_476yh")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 0:0/0/custom_data_0 = "water"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7cg2y"]
 resource_name = "Grass"
-texture = ExtResource("1_7yeyw")
+texture = ExtResource("10_g1u0p")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 0:0/0/custom_data_0 = "grass"
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_uhpxo"]
 resource_name = "Bunny"
-scenes/1/scene = ExtResource("4_gy3b2")
+scenes/1/scene = ExtResource("5_d32px")
 
 [sub_resource type="TileSet" id="TileSet_eulae"]
 tile_size = Vector2i(64, 64)
@@ -49,8 +49,11 @@ sources/1 = SubResource("TileSetAtlasSource_7cg2y")
 sources/0 = SubResource("TileSetAtlasSource_xjl6y")
 sources/2 = SubResource("TileSetScenesCollectionSource_uhpxo")
 
-[node name="Main" type="Node2D"]
-script = ExtResource("1_5ks2a")
+[node name="Level_1" type="Node2D"]
+
+[node name="GameManager" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_3kfpr")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-128, -192)
@@ -89,7 +92,7 @@ label_settings = SubResource("LabelSettings_yj2d1")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="RestartButton" parent="Camera2D/GameOverScreen" instance=ExtResource("2_piuh0")]
+[node name="RestartButton" parent="Camera2D/GameOverScreen" instance=ExtResource("2_aynqm")]
 offset_left = 195.0
 offset_top = 298.0
 offset_right = 451.0
@@ -127,13 +130,13 @@ label_settings = SubResource("LabelSettings_hwfnn")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="RestartButton" parent="Camera2D/VictoryScreen" instance=ExtResource("2_piuh0")]
+[node name="RestartButton" parent="Camera2D/VictoryScreen" instance=ExtResource("2_aynqm")]
 offset_left = 195.0
 offset_top = 298.0
 offset_right = 451.0
 offset_bottom = 362.0
 
-[node name="CollectedEssence" parent="." instance=ExtResource("8_xei5r")]
+[node name="CollectedEssence" parent="." instance=ExtResource("3_uqst5")]
 offset_left = 537.0
 offset_top = -156.0
 offset_right = 729.0
@@ -147,58 +150,61 @@ offset_bottom = -38.0
 theme_override_constants/h_separation = 10
 columns = 5
 
-[node name="DefenderPicker" parent="SlotContainer" instance=ExtResource("3_67toc")]
+[node name="DefenderPicker" parent="SlotContainer" instance=ExtResource("4_2l4ph")]
 layout_mode = 2
-TO_SPAWN = ExtResource("4_gy3b2")
+TO_SPAWN = ExtResource("5_d32px")
 COST = 50
-ICON = ExtResource("5_11kqj")
+ICON = ExtResource("6_wp85y")
 
-[node name="DefenderPicker2" parent="SlotContainer" instance=ExtResource("3_67toc")]
+[node name="DefenderPicker2" parent="SlotContainer" instance=ExtResource("4_2l4ph")]
 layout_mode = 2
-TO_SPAWN = ExtResource("9_6d3gg")
+TO_SPAWN = ExtResource("7_gxvar")
 COST = 25
-ICON = ExtResource("7_bou6u")
+ICON = ExtResource("8_7rluu")
 
 [node name="BgTileMapLayer" type="TileMapLayer" parent="."]
+unique_name_in_owner = true
 scale = Vector2(2, 2)
 tile_map_data = PackedByteArray("AAAAAAQAAQAAAAAAAAABAAQAAQAAAAAAAAACAAQAAQAAAAAAAAADAAQAAQAAAAAAAAAEAAQAAQAAAAAAAAAFAAQAAQAAAAAAAAAFAAMAAQAAAAAAAAAEAAMAAQAAAAAAAAADAAMAAQAAAAAAAAACAAMAAQAAAAAAAAABAAMAAQAAAAAAAAAAAAMAAQAAAAAAAAAAAAIAAQAAAAAAAAABAAIAAQAAAAAAAAACAAIAAQAAAAAAAAADAAIAAQAAAAAAAAAEAAIAAQAAAAAAAAAFAAIAAQAAAAAAAAAFAAEAAQAAAAAAAAAEAAEAAQAAAAAAAAADAAEAAQAAAAAAAAACAAEAAQAAAAAAAAABAAEAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAAAAQAAAAAAAAABAAAAAQAAAAAAAAACAAAAAQAAAAAAAAADAAAAAQAAAAAAAAAEAAAAAQAAAAAAAAAFAAAAAQAAAAAAAAD//wAAAAAAAAAAAAD//wEAAAAAAAAAAAD//wIAAAAAAAAAAAD//wMAAAAAAAAAAAD//wQAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_eulae")
 
 [node name="DefenderTileMapLayer" type="TileMapLayer" parent="."]
+unique_name_in_owner = true
 scale = Vector2(2, 2)
 tile_set = SubResource("TileSet_eulae")
 
-[node name="GameOverArea" parent="DefenderTileMapLayer" instance=ExtResource("7_klegr")]
+[node name="GameOverArea" parent="DefenderTileMapLayer" instance=ExtResource("11_xn2ev")]
 position = Vector2(-112.5, 160)
 scale = Vector2(0.5, 0.5)
 
-[node name="DefenderPlacer" parent="DefenderTileMapLayer" instance=ExtResource("11_cqyyk")]
+[node name="DefenderPlacer" parent="DefenderTileMapLayer" instance=ExtResource("12_eq264")]
 visible = true
 
 [node name="EnemyTileMapLayer" type="TileMapLayer" parent="."]
+unique_name_in_owner = true
 scale = Vector2(2, 2)
 tile_set = SubResource("TileSet_eulae")
 
 [node name="EnemySpawners" type="Node2D" parent="EnemyTileMapLayer"]
 position = Vector2(0, 1)
-script = ExtResource("12_13yvg")
+script = ExtResource("13_r1cfx")
 
 [node name="WaveTimer" type="Timer" parent="EnemyTileMapLayer/EnemySpawners"]
 autostart = true
 
-[node name="EnemySpawner" parent="EnemyTileMapLayer/EnemySpawners" instance=ExtResource("5_no8vd")]
+[node name="EnemySpawner" parent="EnemyTileMapLayer/EnemySpawners" instance=ExtResource("14_odgwq")]
 position = Vector2(416, 28.5)
 
-[node name="EnemySpawner2" parent="EnemyTileMapLayer/EnemySpawners" instance=ExtResource("5_no8vd")]
+[node name="EnemySpawner2" parent="EnemyTileMapLayer/EnemySpawners" instance=ExtResource("14_odgwq")]
 position = Vector2(416, 94)
 
-[node name="EnemySpawner3" parent="EnemyTileMapLayer/EnemySpawners" instance=ExtResource("5_no8vd")]
+[node name="EnemySpawner3" parent="EnemyTileMapLayer/EnemySpawners" instance=ExtResource("14_odgwq")]
 position = Vector2(416, 157.5)
 
-[node name="EnemySpawner4" parent="EnemyTileMapLayer/EnemySpawners" instance=ExtResource("5_no8vd")]
+[node name="EnemySpawner4" parent="EnemyTileMapLayer/EnemySpawners" instance=ExtResource("14_odgwq")]
 position = Vector2(416, 223)
 
-[node name="EnemySpawner5" parent="EnemyTileMapLayer/EnemySpawners" instance=ExtResource("5_no8vd")]
+[node name="EnemySpawner5" parent="EnemyTileMapLayer/EnemySpawners" instance=ExtResource("14_odgwq")]
 position = Vector2(416, 284)
 
 [node name="Enemies" type="Node2D" parent="EnemyTileMapLayer"]

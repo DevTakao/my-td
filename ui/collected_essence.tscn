@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://ddgndtwrt2jqr"]
 
-[ext_resource type="Script" path="res://collected_essence.gd" id="1_bx5bk"]
-[ext_resource type="Texture2D" uid="uid://ccrh4mbuot3v2" path="res://Essence.png" id="1_t3l35"]
+[ext_resource type="Script" path="res://ui/collected_essence.gd" id="1_bx5bk"]
+[ext_resource type="Texture2D" uid="uid://ccrh4mbuot3v2" path="res://items/Essence.png" id="1_t3l35"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6jeon"]
 bg_color = Color(5.47487e-07, 0.236343, 0.0798685, 1)

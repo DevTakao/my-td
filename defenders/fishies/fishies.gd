@@ -1,8 +1,8 @@
 extends StaticBody2D
 
 @export var terrain_list = ["water"]
+@export var ESSENCE: Resource
 
-@onready var ESSENCE = preload("res://essence.tscn")
 @onready var GAME = get_node("/root/Main")
 @onready var TILEMAP = GAME.get_node("DefenderTileMapLayer")
 
