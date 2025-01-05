@@ -3,8 +3,7 @@ extends StaticBody2D
 @export var terrain_list = ["water"]
 @export var ESSENCE: Resource
 
-@onready var GAME = get_node("/root/Main")
-@onready var TILEMAP = GAME.get_node("DefenderTileMapLayer")
+@onready var TILEMAP = LevelState.get_node("DefenderTileMapLayer")
 
 const COOLDOWN = 8
 const MAX_COOLDOWN_BUFFER = 12

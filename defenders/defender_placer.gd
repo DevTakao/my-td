@@ -1,21 +1,20 @@
 extends Panel
 
-@onready var GAME = get_node("/root/Main")
 @onready var TILEMAP = get_node("/root/Main/BgTileMapLayer")
 
 var occupied_cells = [];
 
 func finish_picking_defender():
-	GAME.action = 'default'
-	GAME.picked_defender = null
-	GAME.spend_essence()
+	LevelState.action = 'default'
+	LevelState.picked_defender = null
+	LevelState.spend_essence()
 
 func cancel_picking_defender():
-	GAME.action = 'default'
-	GAME.picked_defender = null
+	LevelState.action = 'default'
+	LevelState.picked_defender = null
 
 func _physics_process(delta: float) -> void:
-	if GAME.action == "picking_defender":
+	if LevelState.action == "picking_defender":
 		visible = true
 	else:
 		visible = false
@@ -40,7 +39,7 @@ func check_placement_legality(defender: Node2D, cell: Vector2i):
 	return not is_occupied and defender.terrain_list.has(terrain)
 
 func place_defender():
-	var defender = GAME.picked_defender.instantiate()
+	var defender = LevelState.picked_defender.instantiate()
 	var cell = get_clicked_cell()
 	var can_place = check_placement_legality(defender, cell)
 	
@@ -51,6 +50,6 @@ func place_defender():
 		cancel_picking_defender()
 
 func _on_gui_input(event: InputEvent) -> void:
-	if GAME.action == 'picking_defender':
+	if LevelState.action == 'picking_defender':
 		if event is InputEventMouseButton and event.button_index == 1 and event.is_pressed():
 			place_defender()

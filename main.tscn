@@ -1,6 +1,5 @@
-[gd_scene load_steps=21 format=4 uid="uid://bqc3ofj5gn6in"]
+[gd_scene load_steps=20 format=4 uid="uid://bqc3ofj5gn6in"]
 
-[ext_resource type="Script" path="res://managers/GameManager.gd" id="1_5ks2a"]
 [ext_resource type="Texture2D" uid="uid://bo2v8lpxooo83" path="res://tiles/GrassTile.png" id="1_7yeyw"]
 [ext_resource type="Texture2D" uid="uid://db4j8ha2wlvpq" path="res://tiles/WaterTile.png" id="2_nfght"]
 [ext_resource type="PackedScene" uid="uid://btkme7qaxekfa" path="res://ui/restart_button.tscn" id="2_piuh0"]
@@ -50,7 +49,6 @@ sources/0 = SubResource("TileSetAtlasSource_xjl6y")
 sources/2 = SubResource("TileSetScenesCollectionSource_uhpxo")
 
 [node name="Main" type="Node2D"]
-script = ExtResource("1_5ks2a")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-128, -192)
