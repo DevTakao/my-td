@@ -1,6 +1,7 @@
 extends Panel
 
-@onready var TILEMAP = get_node("/root/Main/BgTileMapLayer")
+@onready var BG_TILEMAP = get_parent().get_parent().get_node("%BgTileMapLayer")
+@onready var DEFENDER_TILEMAP = get_parent()
 
 var occupied_cells = [];
 
@@ -20,22 +21,22 @@ func _physics_process(delta: float) -> void:
 		visible = false
 
 func get_clicked_cell(): 
-	var click_position = TILEMAP.get_local_mouse_position()
-	var clicked_cell = TILEMAP.local_to_map(click_position)
+	var click_position = BG_TILEMAP.get_local_mouse_position()
+	var clicked_cell = BG_TILEMAP.local_to_map(click_position)
 	return clicked_cell
 	
 func add_defender_to_cell(defender: Node, cell: Vector2i):
 	if cell is Vector2i:
-		var cell_position = TILEMAP.map_to_local(cell)
+		var cell_position = DEFENDER_TILEMAP.map_to_local(cell)
 		defender.position = cell_position
-		TILEMAP.add_child(defender)
+		DEFENDER_TILEMAP.add_child(defender)
 		occupied_cells.push_back(cell)
 	else:
 		print("Invalid cell")
 		
 func check_placement_legality(defender: Node2D, cell: Vector2i):
 	var is_occupied = occupied_cells.has(cell)
-	var terrain = TILEMAP.get_cell_tile_data(cell).get_custom_data("terrain")
+	var terrain = BG_TILEMAP.get_cell_tile_data(cell).get_custom_data("terrain")
 	return not is_occupied and defender.terrain_list.has(terrain)
 
 func place_defender():

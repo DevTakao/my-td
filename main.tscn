@@ -1,8 +1,10 @@
-[gd_scene load_steps=20 format=4 uid="uid://bqc3ofj5gn6in"]
+[gd_scene load_steps=22 format=4 uid="uid://bqc3ofj5gn6in"]
 
 [ext_resource type="Texture2D" uid="uid://bo2v8lpxooo83" path="res://tiles/GrassTile.png" id="1_7yeyw"]
+[ext_resource type="Script" path="res://game_over_screen.gd" id="1_vq0al"]
 [ext_resource type="Texture2D" uid="uid://db4j8ha2wlvpq" path="res://tiles/WaterTile.png" id="2_nfght"]
 [ext_resource type="PackedScene" uid="uid://btkme7qaxekfa" path="res://ui/restart_button.tscn" id="2_piuh0"]
+[ext_resource type="Script" path="res://victory_screen.gd" id="3_08shq"]
 [ext_resource type="PackedScene" uid="uid://vwybhc32v1ms" path="res://defenders/defender-picker.tscn" id="3_67toc"]
 [ext_resource type="PackedScene" uid="uid://bsq11argslkr3" path="res://defenders/bunny/bunny.tscn" id="4_gy3b2"]
 [ext_resource type="Texture2D" uid="uid://dvkm3tvash6t5" path="res://defenders/bunny/Bunny.png" id="5_11kqj"]
@@ -59,6 +61,7 @@ anchor_mode = 0
 unique_name_in_owner = true
 visible = false
 follow_viewport_enabled = true
+script = ExtResource("1_vq0al")
 
 [node name="ColorRect" type="ColorRect" parent="Camera2D/GameOverScreen"]
 anchors_preset = 15
@@ -97,6 +100,7 @@ offset_bottom = 362.0
 unique_name_in_owner = true
 visible = false
 follow_viewport_enabled = true
+script = ExtResource("3_08shq")
 
 [node name="ColorRect" type="ColorRect" parent="Camera2D/VictoryScreen"]
 anchors_preset = 15
@@ -158,11 +162,13 @@ COST = 25
 ICON = ExtResource("7_bou6u")
 
 [node name="BgTileMapLayer" type="TileMapLayer" parent="."]
+unique_name_in_owner = true
 scale = Vector2(2, 2)
 tile_map_data = PackedByteArray("AAAAAAQAAQAAAAAAAAABAAQAAQAAAAAAAAACAAQAAQAAAAAAAAADAAQAAQAAAAAAAAAEAAQAAQAAAAAAAAAFAAQAAQAAAAAAAAAFAAMAAQAAAAAAAAAEAAMAAQAAAAAAAAADAAMAAQAAAAAAAAACAAMAAQAAAAAAAAABAAMAAQAAAAAAAAAAAAMAAQAAAAAAAAAAAAIAAQAAAAAAAAABAAIAAQAAAAAAAAACAAIAAQAAAAAAAAADAAIAAQAAAAAAAAAEAAIAAQAAAAAAAAAFAAIAAQAAAAAAAAAFAAEAAQAAAAAAAAAEAAEAAQAAAAAAAAADAAEAAQAAAAAAAAACAAEAAQAAAAAAAAABAAEAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAAAAQAAAAAAAAABAAAAAQAAAAAAAAACAAAAAQAAAAAAAAADAAAAAQAAAAAAAAAEAAAAAQAAAAAAAAAFAAAAAQAAAAAAAAD//wAAAAAAAAAAAAD//wEAAAAAAAAAAAD//wIAAAAAAAAAAAD//wMAAAAAAAAAAAD//wQAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_eulae")
 
 [node name="DefenderTileMapLayer" type="TileMapLayer" parent="."]
+unique_name_in_owner = true
 scale = Vector2(2, 2)
 tile_set = SubResource("TileSet_eulae")
 
@@ -174,6 +180,7 @@ scale = Vector2(0.5, 0.5)
 visible = true
 
 [node name="EnemyTileMapLayer" type="TileMapLayer" parent="."]
+unique_name_in_owner = true
 scale = Vector2(2, 2)
 tile_set = SubResource("TileSet_eulae")
 
@@ -202,6 +209,4 @@ position = Vector2(416, 284)
 [node name="Enemies" type="Node2D" parent="EnemyTileMapLayer"]
 unique_name_in_owner = true
 
-[connection signal="game_over" from="DefenderTileMapLayer/GameOverArea" to="." method="_on_game_over_area_game_over"]
-[connection signal="victory" from="EnemyTileMapLayer/EnemySpawners" to="." method="_on_enemy_spawners_victory"]
 [connection signal="timeout" from="EnemyTileMapLayer/EnemySpawners/WaveTimer" to="EnemyTileMapLayer/EnemySpawners" method="_on_wave_timer_timeout"]
