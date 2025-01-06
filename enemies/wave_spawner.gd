@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var ENEMY_TILEMAP = get_node("/root/Main/EnemyTileMapLayer/Enemies")
+@onready var ENEMY_TILEMAP = get_parent().get_node("%Enemies")
 
 const AXEMAN = preload("res://enemies/axe_man/axe_man.tscn")
 var spawners = []
@@ -37,7 +37,7 @@ const WAVE_4 = {
 
 const WAVE_5 = {
 	"starts_at": WAVE_DELAY + 80,
-	"mobs": [[AXEMAN, 5]]
+	"mobs": [[AXEMAN, 25]]
 }
 
 const WAVES = [

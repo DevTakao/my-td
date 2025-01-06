@@ -1,0 +1,212 @@
+[gd_scene load_steps=22 format=4 uid="uid://bhckea20lcssy"]
+
+[ext_resource type="Script" path="res://game_over_screen.gd" id="1_j0ddr"]
+[ext_resource type="PackedScene" uid="uid://btkme7qaxekfa" path="res://ui/restart_button.tscn" id="2_rprei"]
+[ext_resource type="Script" path="res://victory_screen.gd" id="3_s02ds"]
+[ext_resource type="PackedScene" uid="uid://ddgndtwrt2jqr" path="res://ui/collected_essence.tscn" id="4_rbf6l"]
+[ext_resource type="PackedScene" uid="uid://vwybhc32v1ms" path="res://defenders/defender-picker.tscn" id="5_dmf8x"]
+[ext_resource type="PackedScene" uid="uid://bsq11argslkr3" path="res://defenders/bunny/bunny.tscn" id="6_i3htc"]
+[ext_resource type="Texture2D" uid="uid://dvkm3tvash6t5" path="res://defenders/bunny/Bunny.png" id="7_rycsi"]
+[ext_resource type="PackedScene" uid="uid://u0n2s08sb6y1" path="res://defenders/fishies/fishies.tscn" id="8_llsbg"]
+[ext_resource type="Texture2D" uid="uid://cp31wk6yfysf5" path="res://defenders/fishies/Fishies.png" id="9_68nke"]
+[ext_resource type="Texture2D" uid="uid://db4j8ha2wlvpq" path="res://tiles/WaterTile.png" id="10_okuiq"]
+[ext_resource type="Texture2D" uid="uid://bo2v8lpxooo83" path="res://tiles/GrassTile.png" id="11_o001j"]
+[ext_resource type="PackedScene" uid="uid://bgfgwpgdd0juh" path="res://ui/game_over_area.tscn" id="12_ngbe8"]
+[ext_resource type="PackedScene" uid="uid://cqht0edjdkhfi" path="res://defenders/defender_placer.tscn" id="13_mo237"]
+[ext_resource type="Script" path="res://enemies/wave_spawner.gd" id="14_y4aym"]
+[ext_resource type="PackedScene" uid="uid://bvkswy5jm1f2v" path="res://enemies/enemy_spawner.tscn" id="15_0ior7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_yj2d1"]
+font_size = 50
+outline_size = 10
+outline_color = Color(0.70694, 0, 0.167683, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_hwfnn"]
+font_size = 50
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xjl6y"]
+resource_name = "Water"
+texture = ExtResource("10_okuiq")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/custom_data_0 = "water"
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7cg2y"]
+resource_name = "Grass"
+texture = ExtResource("11_o001j")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/custom_data_0 = "grass"
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_uhpxo"]
+resource_name = "Bunny"
+scenes/1/scene = ExtResource("6_i3htc")
+
+[sub_resource type="TileSet" id="TileSet_eulae"]
+tile_size = Vector2i(64, 64)
+custom_data_layer_0/name = "terrain"
+custom_data_layer_0/type = 4
+sources/1 = SubResource("TileSetAtlasSource_7cg2y")
+sources/0 = SubResource("TileSetAtlasSource_xjl6y")
+sources/2 = SubResource("TileSetScenesCollectionSource_uhpxo")
+
+[node name="Level_1" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-128, -192)
+scale = Vector2(2, 2)
+anchor_mode = 0
+
+[node name="GameOverScreen" type="CanvasLayer" parent="Camera2D"]
+unique_name_in_owner = true
+visible = false
+follow_viewport_enabled = true
+script = ExtResource("1_j0ddr")
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D/GameOverScreen"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -192.0
+offset_right = -128.0
+offset_bottom = -192.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.721569)
+
+[node name="Label" type="Label" parent="Camera2D/GameOverScreen"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -192.0
+offset_right = -128.0
+offset_bottom = -192.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Game Over"
+label_settings = SubResource("LabelSettings_yj2d1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RestartButton" parent="Camera2D/GameOverScreen" instance=ExtResource("2_rprei")]
+offset_left = 195.0
+offset_top = 298.0
+offset_right = 451.0
+offset_bottom = 362.0
+
+[node name="VictoryScreen" type="CanvasLayer" parent="Camera2D"]
+unique_name_in_owner = true
+visible = false
+follow_viewport_enabled = true
+script = ExtResource("3_s02ds")
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D/VictoryScreen"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -192.0
+offset_right = -128.0
+offset_bottom = -192.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.721569)
+
+[node name="Label" type="Label" parent="Camera2D/VictoryScreen"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -192.0
+offset_right = -128.0
+offset_bottom = -192.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "You win!"
+label_settings = SubResource("LabelSettings_hwfnn")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RestartButton" parent="Camera2D/VictoryScreen" instance=ExtResource("2_rprei")]
+offset_left = 195.0
+offset_top = 298.0
+offset_right = 451.0
+offset_bottom = 362.0
+
+[node name="CollectedEssence" parent="." instance=ExtResource("4_rbf6l")]
+offset_left = 537.0
+offset_top = -156.0
+offset_right = 729.0
+offset_bottom = -57.0
+
+[node name="SlotContainer" type="GridContainer" parent="."]
+offset_left = -113.0
+offset_top = -166.0
+offset_right = 749.0
+offset_bottom = -38.0
+theme_override_constants/h_separation = 10
+columns = 5
+
+[node name="DefenderPicker" parent="SlotContainer" instance=ExtResource("5_dmf8x")]
+layout_mode = 2
+TO_SPAWN = ExtResource("6_i3htc")
+COST = 50
+ICON = ExtResource("7_rycsi")
+
+[node name="DefenderPicker2" parent="SlotContainer" instance=ExtResource("5_dmf8x")]
+layout_mode = 2
+TO_SPAWN = ExtResource("8_llsbg")
+COST = 25
+ICON = ExtResource("9_68nke")
+
+[node name="BgTileMapLayer" type="TileMapLayer" parent="."]
+unique_name_in_owner = true
+scale = Vector2(2, 2)
+tile_map_data = PackedByteArray("AAAAAAQAAQAAAAAAAAABAAQAAQAAAAAAAAACAAQAAQAAAAAAAAADAAQAAQAAAAAAAAAEAAQAAQAAAAAAAAAFAAQAAQAAAAAAAAAFAAMAAQAAAAAAAAAEAAMAAQAAAAAAAAADAAMAAQAAAAAAAAACAAMAAQAAAAAAAAABAAMAAQAAAAAAAAAAAAMAAQAAAAAAAAAAAAIAAQAAAAAAAAABAAIAAQAAAAAAAAACAAIAAQAAAAAAAAADAAIAAQAAAAAAAAAEAAIAAQAAAAAAAAAFAAIAAQAAAAAAAAAFAAEAAQAAAAAAAAAEAAEAAQAAAAAAAAADAAEAAQAAAAAAAAACAAEAAQAAAAAAAAABAAEAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAAAAQAAAAAAAAABAAAAAQAAAAAAAAACAAAAAQAAAAAAAAADAAAAAQAAAAAAAAAEAAAAAQAAAAAAAAAFAAAAAQAAAAAAAAD//wAAAAAAAAAAAAD//wEAAAAAAAAAAAD//wIAAAAAAAAAAAD//wMAAAAAAAAAAAD//wQAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_eulae")
+
+[node name="DefenderTileMapLayer" type="TileMapLayer" parent="."]
+unique_name_in_owner = true
+scale = Vector2(2, 2)
+tile_set = SubResource("TileSet_eulae")
+
+[node name="GameOverArea" parent="DefenderTileMapLayer" instance=ExtResource("12_ngbe8")]
+position = Vector2(-112.5, 160)
+scale = Vector2(0.5, 0.5)
+
+[node name="DefenderPlacer" parent="DefenderTileMapLayer" instance=ExtResource("13_mo237")]
+visible = true
+
+[node name="EnemyTileMapLayer" type="TileMapLayer" parent="."]
+unique_name_in_owner = true
+scale = Vector2(2, 2)
+tile_set = SubResource("TileSet_eulae")
+
+[node name="EnemySpawners" type="Node2D" parent="EnemyTileMapLayer"]
+position = Vector2(0, 1)
+script = ExtResource("14_y4aym")
+
+[node name="WaveTimer" type="Timer" parent="EnemyTileMapLayer/EnemySpawners"]
+autostart = true
+
+[node name="EnemySpawner" parent="EnemyTileMapLayer/EnemySpawners" instance=ExtResource("15_0ior7")]
+position = Vector2(416, 28.5)
+
+[node name="EnemySpawner2" parent="EnemyTileMapLayer/EnemySpawners" instance=ExtResource("15_0ior7")]
+position = Vector2(416, 94)
+
+[node name="EnemySpawner3" parent="EnemyTileMapLayer/EnemySpawners" instance=ExtResource("15_0ior7")]
+position = Vector2(416, 157.5)
+
+[node name="EnemySpawner4" parent="EnemyTileMapLayer/EnemySpawners" instance=ExtResource("15_0ior7")]
+position = Vector2(416, 223)
+
+[node name="EnemySpawner5" parent="EnemyTileMapLayer/EnemySpawners" instance=ExtResource("15_0ior7")]
+position = Vector2(416, 284)
+
+[node name="Enemies" type="Node2D" parent="EnemyTileMapLayer"]
+unique_name_in_owner = true
+
+[connection signal="timeout" from="EnemyTileMapLayer/EnemySpawners/WaveTimer" to="EnemyTileMapLayer/EnemySpawners" method="_on_wave_timer_timeout"]
