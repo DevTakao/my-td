@@ -1,7 +1,18 @@
 [gd_scene load_steps=2 format=3 uid="uid://bqc3ofj5gn6in"]
 
-[ext_resource type="PackedScene" uid="uid://bhckea20lcssy" path="res://levels/level_1.tscn" id="1_6hi5l"]
+[ext_resource type="PackedScene" uid="uid://chcwwov0h63i1" path="res://ui/menu.tscn" id="1_bdtp5"]
 
 [node name="Main" type="Node2D"]
 
-[node name="Level_1" parent="." instance=ExtResource("1_6hi5l")]
+[node name="Menu" parent="." instance=ExtResource("1_bdtp5")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 438.0
+offset_top = 392.0
+offset_right = 438.0
+offset_bottom = 392.0
+size_flags_horizontal = 4
+size_flags_vertical = 6
